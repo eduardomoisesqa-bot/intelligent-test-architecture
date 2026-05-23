@@ -6,6 +6,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,14 +16,29 @@ public final class ServerestUserFixture {
     private static final String API_BASE_URL = System.getProperty("serverest.apiUrl", "https://serverest.dev");
     private static final String PASSWORD = "Teste@123";
     private static final Pattern USER_ID_PATTERN = Pattern.compile("\"_id\"\\s*:\\s*\"([^\"]+)\"");
-
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
-    private ServerestUserFixture() {
+    private final List<RegisteredUser> createdUsers = new ArrayList<>();
+
+    public RegisteredUser registeredUser() {
+        RegisteredUser user = createUser();
+
+        createdUsers.add(user);
+
+        return user;
     }
 
-    public static RegisteredUser registeredUser() {
+    public void cleanup() {
+        for (RegisteredUser user : createdUsers) {
+            removeUser(user);
+        }
+
+        createdUsers.clear();
+    }
+
+    private RegisteredUser createUser() {
         String email = "ita." + Instant.now().toEpochMilli() + "@test.com";
+
         String body = """
                 {
                   "nome": "ITA Test User",
@@ -47,7 +64,7 @@ public final class ServerestUserFixture {
         return new RegisteredUser(extractUserId(response.body()), email, PASSWORD);
     }
 
-    public static void removeUser(RegisteredUser user) {
+    private void removeUser(RegisteredUser user) {
         if (user == null || user.id() == null || user.id().isBlank()) {
             return;
         }
@@ -60,7 +77,7 @@ public final class ServerestUserFixture {
         );
     }
 
-    private static HttpResponse<String> send(HttpRequest request) {
+    private HttpResponse<String> send(HttpRequest request) {
         try {
             return HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException exception) {
@@ -71,7 +88,7 @@ public final class ServerestUserFixture {
         }
     }
 
-    private static String extractUserId(String body) {
+    private String extractUserId(String body) {
         Matcher matcher = USER_ID_PATTERN.matcher(body);
 
         if (!matcher.find()) {

@@ -1,6 +1,7 @@
 package com.eduardo.ita.base;
 
 import com.eduardo.ita.assertions.LoginAssertions;
+import com.eduardo.ita.fixtures.ServerestUserFixture;
 import com.eduardo.ita.flows.LoginFlow;
 import com.eduardo.ita.pages.HomePage;
 import com.eduardo.ita.pages.LoginPage;
@@ -20,9 +21,11 @@ public abstract class BaseWebTest {
     protected Page page;
     protected LoginFlow loginFlow;
     protected LoginAssertions loginAssertions;
+    protected ServerestUserFixture serverestUserFixture;
 
     @BeforeEach
     void setUpBrowser() {
+        serverestUserFixture = new ServerestUserFixture();
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isHeadless()));
         page = browser.newPage();
@@ -36,6 +39,7 @@ public abstract class BaseWebTest {
 
     @AfterEach
     void tearDownBrowser() {
+        serverestUserFixture.cleanup();
         if (browser != null) {
             browser.close();
         }
@@ -44,6 +48,8 @@ public abstract class BaseWebTest {
             playwright.close();
         }
     }
+
+
 
     private String baseUrl() {
         return System.getProperty(
