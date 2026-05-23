@@ -1,1 +1,8 @@
-C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\FirstWebTest.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\assertions\LoginAssertions.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\base\BaseWebTest.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\fixtures\RegisteredUser.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\fixtures\ServerestUserFixture.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\flows\LoginFlow.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\pages\HomePage.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\pages\LoginPage.java
+C:\Users\Notebook\Desktop\qa-template\intelligent-test-architecture\ita-web-automation\src\test\java\com\eduardo\ita\tests\LoginTest.java

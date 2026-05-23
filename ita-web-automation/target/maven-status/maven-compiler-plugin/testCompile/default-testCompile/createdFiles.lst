@@ -1,1 +1,8 @@
-com\eduardo\ita\FirstWebTest.class
+com\eduardo\ita\flows\LoginFlow.class
+com\eduardo\ita\fixtures\RegisteredUser.class
+com\eduardo\ita\tests\LoginTest.class
+com\eduardo\ita\base\BaseWebTest.class
+com\eduardo\ita\fixtures\ServerestUserFixture.class
+com\eduardo\ita\pages\HomePage.class
+com\eduardo\ita\pages\LoginPage.class
+com\eduardo\ita\assertions\LoginAssertions.class
