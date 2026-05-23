@@ -1,5 +1,7 @@
-# intelligent-test-architecture
-Uma plataforma de Quality Engineering orientada por IA, observabilidade e arquitetura escalável
+# Intelligent Test Architecture
+
+Uma plataforma de Quality Engineering orientada por IA, observabilidade e arquitetura escalável.
+
 AI-Driven Quality Engineering Platform focused on scalable automation architecture, observability, CI/CD and intelligent quality analysis.
 
 ## Vision
@@ -18,7 +20,7 @@ The platform aims to evolve traditional QA automation into an intelligent engine
 - Support enterprise-grade observability and reporting
 - Provide reusable and modular testing components
 
-  ## Architecture Overview
+## Architecture Overview
 
 The platform is organized into modular quality domains:
 
@@ -36,6 +38,7 @@ Each module follows clean architecture principles and focuses on scalability, re
 ## Technology Stack
 
 ### Automation
+
 - Java
 - Playwright
 - Rest Assured
@@ -43,6 +46,7 @@ Each module follows clean architecture principles and focuses on scalability, re
 - UIAutomator2
 
 ### AI & Intelligence
+
 - Python
 - OpenAI API
 - LangChain
@@ -50,19 +54,22 @@ Each module follows clean architecture principles and focuses on scalability, re
 - Embeddings
 
 ### DevOps
+
 - Docker
 - GitHub Actions
 - Jenkins
 
 ### Observability
+
 - Grafana
 - Prometheus
 - ELK Stack
 
 ### Reporting
+
 - Allure Reports
 
-- ## Platform Modules
+## Platform Modules
 
 | Module | Description |
 |---|---|
@@ -75,6 +82,19 @@ Each module follows clean architecture principles and focuses on scalability, re
 | ita-ci-cd | Pipeline integration |
 | ita-performance | Performance testing |
 
+## Quality Engineering Strategy
+
+The platform adopts modern Quality Engineering principles:
+
+- Shift Left Testing
+- Shift Right Testing
+- Test Pyramid
+- Contract Testing
+- Risk-Based Testing
+- Continuous Testing
+- Resilience Validation
+- Observability-Driven Quality
+
 ## AI Capabilities
 
 The platform includes AI-assisted quality features:
@@ -86,7 +106,7 @@ The platform includes AI-assisted quality features:
 - Root Cause Analysis generation
 - QA knowledge assistant using RAG
 
-- ## Project Structure
+## Project Structure
 
 ```text
 intelligent-test-architecture/
@@ -100,79 +120,60 @@ intelligent-test-architecture/
 ├── ita-performance/
 ├── ita-ci-cd/
 └── docs/
-
-
----
-
-# 10. Execution Flow
-
-Muito importante.
-
-Exemplo:
-
-```md id="yk00bb"
-## Execution Flow
-
-1. Application deployment
-2. Environment validation
-3. Automated test execution
-4. AI-based execution analysis
-5. Reporting generation
-6. Metrics publishing
-7. CI/CD quality gate validation
-
-## CI/CD Strategy
+Execution Flow
+Application deployment
+Environment validation
+Automated test execution
+AI-based execution analysis
+Reporting generation
+Metrics publishing
+CI/CD quality gate validation
+CI/CD Strategy
 
 The platform integrates automated quality validation into CI/CD pipelines through:
 
-- Parallel execution
-- Quality gates
-- Artifact publishing
-- Automated reporting
-- Failure notifications
-- Intelligent execution analysis
-
-## Observability
+Parallel execution
+Quality gates
+Artifact publishing
+Automated reporting
+Failure notifications
+Intelligent execution analysis
+Observability
 
 The platform provides operational quality metrics such as:
 
-- Flaky rate
-- Test execution duration
-- Failure trends
-- Retry analysis
-- Coverage metrics
-- Pipeline health indicators
-
-## Roadmap
-
-### Phase 1
-- Foundation architecture
-- Web automation
-- CI/CD setup
-
-### Phase 2
-- API automation
-- Reporting layer
-- Docker environment
-
-### Phase 3
-- Mobile automation
-- Observability stack
-
-### Phase 4
-- AI quality engine
-- RAG assistant
-- Intelligent analysis
-
-## Getting Started
+Flaky rate
+Test execution duration
+Failure trends
+Retry analysis
+Coverage metrics
+Pipeline health indicators
+Roadmap
+Phase 1
+Foundation architecture
+Web automation
+CI/CD setup
+Phase 2
+API automation
+Reporting layer
+Docker environment
+Phase 3
+Mobile automation
+Observability stack
+Phase 4
+AI quality engine
+RAG assistant
+Intelligent analysis
+Getting Started
 
 Project setup instructions will be provided as modules are implemented incrementally.
 
 Initial focus:
-- Foundation architecture
-- Web automation layer
-- CI/CD integration
-## Author
+
+Foundation architecture
+Web automation layer
+CI/CD integration
+Author
 
 Eduardo Moises
 
