@@ -8,6 +8,7 @@ import com.eduardo.ita.fixtures.ServerestUserFixture;
 import com.eduardo.ita.flows.LoginFlow;
 import com.eduardo.ita.pages.HomePage;
 import com.eduardo.ita.pages.LoginPage;
+import com.eduardo.ita.support.TraceManager;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
@@ -28,6 +29,7 @@ public abstract class BaseWebTest {
 
     @BeforeEach
     void setUpBrowser() {
+        TraceManager.startTrace(context);
         serverestUserFixture = new ServerestUserFixture();
 
         playwright = Playwright.create();
@@ -62,5 +64,9 @@ public abstract class BaseWebTest {
         if (playwright != null) {
             playwright.close();
         }
+        TraceManager.stopTrace(
+                context,
+                this.getClass().getSimpleName()
+        );
     }
 }
