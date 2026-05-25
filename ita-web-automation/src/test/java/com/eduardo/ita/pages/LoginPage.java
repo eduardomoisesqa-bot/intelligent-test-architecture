@@ -3,7 +3,6 @@ package com.eduardo.ita.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.PlaywrightException;
-import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
 public class LoginPage {
@@ -15,19 +14,19 @@ public class LoginPage {
 
     public LoginPage(Page page, String baseUrl) {
         this.page = page;
-        this.baseUrl = baseUrl;
+        this.baseUrl = baseUrl.replaceAll("/+$", "");
     }
 
     private Locator emailInput() {
-        return page.getByPlaceholder("Digite seu email");
+        return page.getByTestId("email");
     }
 
     private Locator passwordInput() {
-        return page.getByPlaceholder("Digite sua senha");
+        return page.getByTestId("senha");
     }
 
     private Locator loginButton() {
-        return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Entrar"));
+        return page.getByTestId("entrar");
     }
 
     private Locator alertMessage() {
@@ -36,6 +35,10 @@ public class LoginPage {
 
     public void open() {
         page.navigate(baseUrl + LOGIN_PATH);
+        emailInput().waitFor(
+                new Locator.WaitForOptions()
+                        .setState(WaitForSelectorState.VISIBLE)
+        );
     }
 
     public void fillEmail(String email) {
