@@ -3,11 +3,13 @@ package com.eduardo.ita.base;
 import com.eduardo.ita.assertions.LoginAssertions;
 import com.eduardo.ita.config.EnvironmentConfig;
 import com.eduardo.ita.factories.BrowserFactory;
+import com.eduardo.ita.factories.ContextFactory;
 import com.eduardo.ita.fixtures.ServerestUserFixture;
 import com.eduardo.ita.flows.LoginFlow;
 import com.eduardo.ita.pages.HomePage;
 import com.eduardo.ita.pages.LoginPage;
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.junit.jupiter.api.AfterEach;
@@ -22,6 +24,7 @@ public abstract class BaseWebTest {
     protected LoginFlow loginFlow;
     protected LoginAssertions loginAssertions;
     protected ServerestUserFixture serverestUserFixture;
+    protected BrowserContext context;
 
     @BeforeEach
     void setUpBrowser() {
@@ -29,11 +32,14 @@ public abstract class BaseWebTest {
 
         playwright = Playwright.create();
         browser = BrowserFactory.createBrowser(playwright);
-        page = browser.newPage();
+
+
+        context = ContextFactory.createContext(browser);
+        page = context.newPage();
 
         page.setDefaultTimeout(EnvironmentConfig.timeout());
 
-        LoginPage loginPage = new LoginPage(page, EnvironmentConfig.BaseUrl());
+        LoginPage loginPage = new LoginPage(page, EnvironmentConfig.baseUrl());
         HomePage homePage = new HomePage(page);
 
         loginFlow = new LoginFlow(loginPage);
@@ -44,6 +50,9 @@ public abstract class BaseWebTest {
     void tearDownBrowser() {
         if (serverestUserFixture != null) {
             serverestUserFixture.cleanup();
+        }
+        if (context != null){
+            context.close();
         }
 
         if (browser != null) {
