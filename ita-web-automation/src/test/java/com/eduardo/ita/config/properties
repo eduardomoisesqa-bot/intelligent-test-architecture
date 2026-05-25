@@ -1,0 +1,5 @@
+base.url=https://front.serverest.dev
+api.url=https://serverest.dev
+browser=chromium
+headless=false
+timeout=10000
